@@ -1,17 +1,22 @@
 package com.frogobox.research
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.frogobox.research.base.BaseActivity
+import com.frogobox.research.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
+
+    override fun setupViewBinding(): ActivityMainBinding {
+        return ActivityMainBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        Log.d("MainActivity", "Call Module Core : ${CallModule.callCore}")
-        Log.d("MainActivity", "Call Module Payment : ${CallModule.callPayment}")
-        Log.d("MainActivity", "Call Module Security : ${CallModule.callSecurity}")
+        if (savedInstanceState == null) {
+            Log.d("MainActivity", "onCreate")
+        }
 
     }
+
 }
